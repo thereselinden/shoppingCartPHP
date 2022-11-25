@@ -1,11 +1,15 @@
 <?php
 
 
-class Cart
+class Cart  
 {
     private array $items = [];
 
     //TODO Skriv getter för items
+    public function __construct()
+    {
+        return $this->items;
+    }
 
     /*
      Skall lägga till en produkt i kundvagnen genom att
@@ -17,6 +21,7 @@ class Cart
      */
     public function addProduct($product)
     {
+        
     }
 
 

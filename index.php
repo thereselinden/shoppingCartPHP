@@ -10,6 +10,7 @@ $product1 = new Product(1, "iPhone 11", 2500, 10);
 $product2 = new Product(2, "M2 SSD", 400, 3);
 $product3 = new Product(3, "Samsung Galaxy S20", 3200, 10);
 
+
 //Instansiera Cart
 $cart = new Cart();
 //Lägger till 3 produkter i kundvagnen
@@ -17,9 +18,11 @@ $cartItem1 = $cart->addProduct($product1, 1);
 $cartItem2 = $cart->addProduct($product2, 1);
 $cartItem3 = $cart->addProduct($product3, 1);
 
+echo $cartItem1;
+
 //Skriver ut namn på produkter i kundvagnen
 echo "<h3>Produkter i kundvagnen:</h3>";
-// echo $cartItem1->getProduct()->getTitle() . "<br>";
+//echo $cartItem1->getProduct()->getTitle() . "<br>";
 // echo $cartItem2->getProduct()->getTitle() . "<br>";
 // echo $cartItem3->getProduct()->getTitle() . "<br>";
 
