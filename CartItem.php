@@ -10,7 +10,7 @@ class CartItem
     public function __construct($product, $quantity)
     {
         $this->product = $product;
-        $this->product = $quantity;
+        $this->quantity = $quantity;
 
     }
     // TODO Skriv getters för alla properties
@@ -18,13 +18,21 @@ class CartItem
         return $this->product;
     }
 
-    public function getQuantity() {
+
+    public function getQuantity() {      
         return $this->quantity;
     }
 
     //VG: Skall utöka antalet på ett cartItem med 1. 
     //VG: Det skall inte vara möjligt att utöka så att antalet överstiger produktens $inStock.
-    public function increaseQuantity()
+    public function increaseQuantity() 
     {
+    // sätt ett initialvärde i parameter typ $productQuantity = 1 
+    /* 
+    if ($this->getQuantity() + $productQuantity > $this->getProduct()->getInStock()) {
+        echo "Product quantity can not be more than $this->getProduct()->getInStock()"
+    }
+    $this->quantity += 1;
+    */
     }
 }
