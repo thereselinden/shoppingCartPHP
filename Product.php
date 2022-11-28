@@ -20,7 +20,8 @@ class Product
 
     // TODO Skriv getters för alla properties
 
-    public function getId() {
+    public function getId()  {
+       // echo "is id int? : " . is_int($this->id) . '<br>';
         return $this->id;
     }
 

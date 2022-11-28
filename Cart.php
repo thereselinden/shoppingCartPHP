@@ -21,33 +21,53 @@ class Cart
      skall istället quantity på cartitem ökas.
      */
 
-
    public function addProduct($product, $quantity)
     {
-   // print_r($product->getTitle());
+    //echo "ProductId: " . $product->getId() . "<br>";
     $cartItem = new CartItem($product, $quantity);
-    array_push($this->items, $cartItem);
+    //array_push($this->items, $cartItem);
+    $this->items[] = $cartItem;
     return $cartItem;
 
-    //kolla om product id redan finns om det finns anropa increase()
-    //gör en koll typ: 
-    /*
-    OM ID INTE FINNS UPPDATERA ANNARS ÖKA ANTAL
-    if(!$this-items[$product->getId()]) {
-       $cartItem = new CartItem($product, $quantity);
-      array_push($this->items, $cartItem);
-      return $cartItem;
-    } else {
-      $cartItem->increaseQuantity($quantity)
-      return $cartItem;
-    }
-    */
+   
+    //OM ID INTE FINNS LÄGG TILL NY INSTANCE  ANNARS ÖKA ANTAL
+    // $cartItem = $this->items[$product->getId()] ?? null;
+    // echo "Intial CARTITEM value: " . $cartItem . "<br>";
+    // if(!$cartItem) {
+    //   echo 'No product of this found, I will create a new product object! <br>';
+    //   $cartItem = new CartItem($product, $quantity);
+    //   array_push($this->items, $cartItem);
+    //   //return $cartItem;
+    // } 
+    //   echo 'Product already in cart - I will increase quantity instead! <br>';
+    //   $cartItem->increaseQuantity($quantity);
+    //   return $cartItem;
+    
+    
     }
 
     //Skall ta bort en produkt ur kundvagnen (använd unset())
     public function removeProduct($product)
     {
-      unset($this->items[$product->getId()]);
+
+      for ($i = 0; $i < count($this->items); $i++) {
+        if($product->getId() === $this->items[$i]->getProduct()->getId()) {
+          echo "REMOVE PRODUCT METHOD: " . $product->getTitle();
+          //unset($this->items[$i]);
+          //unset($product);
+          array_splice($this->items, $i, 1);
+          break;
+        }
+      }
+
+      // $index = 0;
+      // foreach($this->items as $item) {
+      //   if($product->getId() === $item->getProduct()->getId()) {
+      //     echo "REMOVE PRODUCT METHOD: " . $product->getTitle();
+      //     unset($this->items[$index]);
+      //   }
+      //   $index++;
+      // }
     }
 
     //Skall returnera totala antalet produkter i kundvagnen
@@ -56,6 +76,7 @@ class Cart
     {
      $quantity = 0;
       foreach ($this->items as $item) {
+       //echo "Product title and number of products: " . $item->getProduct()->getTitle() . ' ,  antal: ' . $item->getQuantity() . ' productId: ' . $item->getProduct()->getId() .'<br>';
         $quantity += $item->getQuantity();
       }
      return $quantity;
@@ -70,10 +91,7 @@ class Cart
         foreach ($this->items as $item) {
             $totalSum += $item->getQuantity() * $item->getProduct()->getPrice();
         }
-
         return $totalSum;
     }
-
-
 
 }
