@@ -52,22 +52,11 @@ class Cart
 
       for ($i = 0; $i < count($this->items); $i++) {
         if($product->getId() === $this->items[$i]->getProduct()->getId()) {
-          echo "REMOVE PRODUCT METHOD: " . $product->getTitle();
-          //unset($this->items[$i]);
-          //unset($product);
-          array_splice($this->items, $i, 1);
+          unset($this->items[$i]);
+          $this->items = array_values($this->items); //reindex after unset 
           break;
         }
       }
-
-      // $index = 0;
-      // foreach($this->items as $item) {
-      //   if($product->getId() === $item->getProduct()->getId()) {
-      //     echo "REMOVE PRODUCT METHOD: " . $product->getTitle();
-      //     unset($this->items[$index]);
-      //   }
-      //   $index++;
-      // }
     }
 
     //Skall returnera totala antalet produkter i kundvagnen

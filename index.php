@@ -5,7 +5,6 @@ require_once "Product.php";
 require_once "Cart.php";
 require_once "CartItem.php";
 
-
 //Skapa 3 nya produkter
 $product1 = new Product(1, "iPhone 11", 2500, 10);
 $product2 = new Product(2, "M2 SSD", 400, 3);
@@ -18,16 +17,11 @@ $cartItem1 = $cart->addProduct($product1, 1);
 $cartItem2 = $cart->addProduct($product2, 1);
 $cartItem3 = $cart->addProduct($product3, 1);
 
-echo "<br>THIS_ITEMS<br>";
-print_r($cart->getItems());
-
-
 //Skriver ut namn på produkter i kundvagnen
 echo "<h3>Produkter i kundvagnen:</h3>";
 echo $cartItem1->getProduct()->getTitle() . "<br>";
 echo $cartItem2->getProduct()->getTitle() . "<br>";
 echo $cartItem3->getProduct()->getTitle() . "<br>";
-
 
 //Skriver ut antalet produkter i kundvagnen
 echo "<h3>Antal produkter i kundvagnen: </h3>";
@@ -41,7 +35,6 @@ echo $cart->getTotalSum() . "<br>"; // Detta skall skriva ut 6100
 $cartItem2->increaseQuantity();
 $cartItem2->increaseQuantity();
 
-
 //Skriver ut antalet produkter i kundvagnen efter utökat antal
 echo "<h3>Antal produkter i kundvagnen efter utökat antal: </h3>";
 echo $cart->getTotalQuantity() . "<br>"; // Detta skall skriva ut 5
@@ -52,7 +45,6 @@ echo $cart->getTotalSum() . "<br>"; // Detta skall skriva ut 6900
 
 //Tar bort product1 ur kundvagnen
 $cart->removeProduct($product1);
-//$cart->removeProduct($product2); TA BORT 
 
 //Skriver ut antalet produkter i kundvagnen efter borttag
 echo "<h3>Antal produkter i kundvagnen efter borttag av produkt: </h3>";

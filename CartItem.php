@@ -27,18 +27,15 @@ class CartItem
     //VG: Det skall inte vara möjligt att utöka så att antalet överstiger produktens $inStock.
     public function increaseQuantity($productQuantity = 1) 
     {
-    // sätter ett initialvärde i parameter $productQuantity = 1 
-    $inStock = $this->getProduct()->getInStock();
+      // sätter ett initialvärde i parameter $productQuantity = 1 
+      $inStock = $this->getProduct()->getInStock();
    
       if ($this->getQuantity() + $productQuantity > $inStock) {
-        echo "Out of stock, in stock quantity: ". $this->getProduct()->getInStock();
-        echo 'Kan inte lägga till. Slut i lager';
+        echo 'Kan inte lägga till. Slut i lager ' . $this->getProduct()->getInStock();
         // Stops nextcomming code to run, since we are throwing Exception
         // throw new Exception( "Product quantity can not be more than whats available in stock, for this product it is: ". $this->getProduct()->getInStock());
       }
-      $this->quantity += 1;
 
-      //$this->quantity++;
-
+      $this->quantity++;
     }
 }
