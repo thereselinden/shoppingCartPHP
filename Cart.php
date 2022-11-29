@@ -23,40 +23,33 @@ class Cart
 
    public function addProduct($product, $quantity)
     {
-    //echo "ProductId: " . $product->getId() . "<br>";
-    $cartItem = new CartItem($product, $quantity);
-    //array_push($this->items, $cartItem);
-    $this->items[] = $cartItem;
+
+    if(isset($this->items[$product->getId()])) {
+      $cartItem = $this->items[$product->getId()];
+      $cartItem->increaseQuantity();
+    } else {
+      $cartItem = new CartItem($product, $quantity);
+      $this->items[$product->getId()] = $cartItem;
+    }
+  
     return $cartItem;
 
-   
-    //OM ID INTE FINNS LÄGG TILL NY INSTANCE  ANNARS ÖKA ANTAL
-    // $cartItem = $this->items[$product->getId()] ?? null;
-    // echo "Intial CARTITEM value: " . $cartItem . "<br>";
-    // if(!$cartItem) {
-    //   echo 'No product of this found, I will create a new product object! <br>';
-    //   $cartItem = new CartItem($product, $quantity);
-    //   array_push($this->items, $cartItem);
-    //   //return $cartItem;
-    // } 
-    //   echo 'Product already in cart - I will increase quantity instead! <br>';
-    //   $cartItem->increaseQuantity($quantity);
-    //   return $cartItem;
-    
-    
     }
 
     //Skall ta bort en produkt ur kundvagnen (använd unset())
     public function removeProduct($product)
     {
 
-      for ($i = 0; $i < count($this->items); $i++) {
-        if($product->getId() === $this->items[$i]->getProduct()->getId()) {
-          unset($this->items[$i]);
-          $this->items = array_values($this->items); //reindex after unset 
-          break;
-        }
-      }
+      unset($this->items[$product->getId()]);
+
+      // IF WE WOULD NOT HAVE PUSHED CARTITEM AS ASSOCIATIVE ARRAY!
+      // for ($i = 0; $i < count($this->items); $i++) {
+      //   if($product->getId() === $this->items[$i]->getProduct()->getId()) {
+      //     unset($this->items[$i]);
+      //     $this->items = array_values($this->items); //reindex after unset 
+      //     break;
+      //   }
+      // }
     }
 
     //Skall returnera totala antalet produkter i kundvagnen
