@@ -13,11 +13,11 @@ class CartItem
         $this->quantity = $quantity;
 
     }
+    
     // TODO Skriv getters för alla properties
     public function getProduct() {
         return $this->product;
     }
-
 
     public function getQuantity() {      
         return $this->quantity;
@@ -29,14 +29,8 @@ class CartItem
     {   
       if ($this->product->getInStock()   > $this->quantity) {
         $this->quantity++;
-
-        // Stops nextcomming code to run, since we are throwing Exception
       } else {
        echo 'Kan inte lägga till. Slut i lager ';
-       //throw new Exception( "Kan inte lägga till. Slut i lager: ". $this->getProduct()->getInStock());
-
-
       }
-
     }
 }

@@ -23,7 +23,6 @@ echo $cartItem1->getProduct()->getTitle() . "<br>";
 echo $cartItem2->getProduct()->getTitle() . "<br>";
 echo $cartItem3->getProduct()->getTitle() . "<br>";
 
-
 //Skriver ut antalet produkter i kundvagnen
 echo "<h3>Antal produkter i kundvagnen: </h3>";
 echo $cart->getTotalQuantity() . "<br>"; // Detta skall skriva ut 3
@@ -35,7 +34,6 @@ echo $cart->getTotalSum() . "<br>"; // Detta skall skriva ut 6100
 //Lägger till 2 till av produkten cartItem2 i kundvagnen
 $cartItem2->increaseQuantity();
 $cartItem2->increaseQuantity();
-
 
 //Skriver ut antalet produkter i kundvagnen efter utökat antal
 echo "<h3>Antal produkter i kundvagnen efter utökat antal: </h3>";
