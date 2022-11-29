@@ -1,1 +1,1 @@
-# shoppingCartPHP
+# shoppingcart - PHP
